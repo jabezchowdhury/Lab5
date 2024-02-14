@@ -2,8 +2,8 @@
 =========================================================
 Name        : lab5_exe_C.html
 Assignment  : Lab 5, Exercise C
-Author(s)   : Mahdi Ansari, William Arthur Philip Louis
-Submission  : May 21, 2030
+Author(s)   : Jabez Chowdhury
+Submission  : Februrary 14, 2024
 Description : DOM Elements.
 =========================================================
 -->
@@ -207,32 +207,124 @@ Description : DOM Elements.
 			document.addEventListener('DOMContentLoaded', function afterRender() {
 				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
 
+				// Select all elements with the class "companyName"
+				var elements = document.getElementsByClassName("companyName");
+			
+
+				// Loop through each element
+				for (var i = 0; i < elements.length; i++) {
+					// Set the text contents to "Your Name"
+					elements[i].textContent = "Jabez";
+
+					// Remove the border
+					elements[i].style.border = "none";
+
+				}
 
 				// Task 2: Change the background color of the navigation bar
-				
+
+				// Select the navigation bar
+				var navbar = document.querySelector("nav");
+
+				// Change the background color
+				navbar.style.backgroundColor = "orange";
 
 				// Task 3: Hide the section titled 'What is full-stack?'
 
+				// Select the title element
+				var title = Array.from(document.querySelectorAll('h2')).find(h2 => h2.textContent === 'What is full-stack?');
+
+				// Hide the section
+				if(title) {
+					title.parentElement.style.display = "none";
+				}
 
 				// Task 4: Create a new <p> element and append it to the 'About Us' section
 
+				// create a new paragraph element
+				var newParagraph = document.createElement("p");
+
+				// set the text content of the new paragraph element
+				newParagraph.textContent = "This is a new paragraph";
+
+				// make the new paragraph red as per the output
+				newParagraph.style.color = 'red';
+
+				// select About us
+				var aboutUsSection = Array.from(document.querySelectorAll('h2')).find(h2 => h2.textContent === 'About Us');
+
+				// now, append the new paragraph to the about us section
+				if(aboutUsSection) {
+					aboutUsSection.parentNode.appendChild(newParagraph);
+				}
 
 				// Task 5: Add placeholders to input elements based on their corresponding label IDs
 
+				// first, select all the input elements
+				var inputs = Array.from(document.querySelectorAll('input, textarea'));
+
+				inputs.forEach(input => {
+					var label = document.querySelector(`label[for="${input.id}"]`);
+
+				// if label exists
+				if (label) {
+					var placeholderText = label.textContent.replace(/:/g, '');
+					input.placeholder = placeholderText;
+				}
+				});
 
 				// Task 6: Set the src attribute of the image
+
+				//select the image element
+				var image = document.querySelector('img');
+
+				// now, set the src attribute of the image
+				image.src = 'https://github.com/jabezchowdhury/Lab5/raw/main/images/example.svg';
 
 
 				// Task 7: Add a new item in the navigation menu
 
+				// select the nav menu
+				var navMenu = document.querySelector('nav ul');
+				
+				// create a new list item
+				var newItem = document.createElement('li');
+				var newLink = document.createElement('a');
+
+				// set the href attrbute and text content
+				newLink.href = '#';
+				newLink.textContent = 'Blog';
+
+				// now, append to the list item, then the list item to the nav menu
+				newItem.appendChild(newLink);
+				navMenu.appendChild(newItem);
 
 				// Task 8: Change the submit button text upon clicking and make it disabled
 
+				// select submit button
+				var submitButton = document.querySelector('input[type="button"]');
 
+				// add event listener to submit button
+				submitButton.addEventListener('click', function(event) {
+					// do not let the form submit
+					event.preventDefault();
+
+					// change the button text and disable it
+					submitButton.value = 'Submitting...';
+					submitButton.disabled = true;
+				});
+				
 				// Task 9: Change the text color of each item in the 'Related Links' to green
+				// Select all list items in the 'Related Links' section
+				var relatedLinks = document.querySelectorAll('aside ul li a');
 
-
+				// Loop through each list item
+				for (var i = 0; i < relatedLinks.length; i++) {
+    					relatedLinks[i].style.color = 'green';
+				}
+				
 				// Task 10: Add a red solid border to the footer
+				document.querySelector('footer').style.border = 'solid 3px red';
 			});
 		</script>
 	</body>
