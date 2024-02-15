@@ -1,7 +1,7 @@
 # Lab 5
 
 ## Team Members
-| Name                      |
+| Name       |UCID               |
 |---------------------------|
-| Jabez Chowdhury 30122363  |
-| John Doe        12345678  |
+| Jabez Chowdhury | 30122363  |
+| Yuecheng Sun |30180767 |
