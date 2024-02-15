@@ -104,10 +104,45 @@ const getMatrixData2D = function (matrixId) {
 // Add your matrix calculation functions here
 // The functions must check the posibility of calculation too.
 function addMatrices(matrix1, matrix2){ 
-	// provide the code
+    // Check if the dimensions of both matrices are the same
+    if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
+        return "Error: Matrices are not the same size";
+    }
+
+    // Create a new matrix with the same dimensions
+    let result = new Array(matrix1.length).fill().map(() => new Array(matrix1[0].length).fill(0));
+
+    // Loop over each cell in the matrices
+    for (let i = 0; i < matrix1.length; i++) {
+        for (let j = 0; j < matrix1[0].length; j++) {
+            // Add the values in the same cell of both matrices
+            result[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+
+    // Return the new matrix
+    return result;
 }
+
 const subtractMatrices = function (matrix1, matrix2) { 
-	// provide the code
+	// Check if the dimensions of both matrices are the same
+    if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
+        return "Error: Matrices are not the same size";
+    }
+
+    // Create a new matrix with the same dimensions
+    let result = new Array(matrix1.length).fill().map(() => new Array(matrix1[0].length).fill(0));
+
+    // Loop over each cell in the matrices
+    for (let i = 0; i < matrix1.length; i++) {
+        for (let j = 0; j < matrix1[0].length; j++) {
+            // Subtract the values in the same cell of both matrices
+            result[i][j] = matrix1[i][j] - matrix2[i][j];
+        }
+    }
+
+    // Return the new matrix
+    return result;
 };
 const multiplyMatrices = (matrix1, matrix2) => { 
 	// provide the code
